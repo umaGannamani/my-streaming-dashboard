@@ -1,6 +1,6 @@
 import { fetchMovieById } from "../../../lib/omdb";
 import Image from "next/image";
-import { Movie } from "@/types/movie";
+import { MovieDetail } from "../../../types/movieDetail";
 import Link from "next/link";
 
 export default async function MovieDetailPage({ params }: { params: { id: string } }) {
