@@ -1,11 +1,11 @@
 /* ==========================
-   GLOBAL STYLES
+   GLOBALS + TAILWIND
 ========================== */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Global Reset */
+/* Reset */
 * {
   margin: 0;
   padding: 0;
@@ -14,7 +14,7 @@
 
 html,
 body {
-  background-color: #0b0b0f;
+  background: #0b0b0f;
   color: #ffffff;
   font-family: "Poppins", sans-serif;
   scroll-behavior: smooth;
@@ -41,11 +41,11 @@ header {
 header a {
   text-decoration: none;
   color: #e5e5e5;
-  transition: color 0.3s;
+  transition: color 0.3s ease;
 }
 
 header a:hover {
-  color: #ff4757;
+  color: #ff4b5c;
 }
 
 header .logo {
@@ -54,7 +54,6 @@ header .logo {
   color: #ff4b5c;
 }
 
-/* Navigation */
 nav {
   display: flex;
   gap: 2rem;
@@ -86,106 +85,122 @@ nav {
   .mobile-menu a {
     color: #e5e5e5;
     padding: 0.75rem 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   }
 
   .mobile-menu a:hover {
-    color: #ff4757;
+    color: #ff4b5c;
   }
 }
 
 /* ==========================
-   HERO BANNER
+   HERO BANNER (FIXED)
 ========================== */
 .hero-banner {
   position: relative;
   width: 100%;
   height: 60vh;
   overflow: hidden;
+  display: flex;
+  align-items: flex-end;
 }
 
 .hero-banner img {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: brightness(70%);
+  filter: brightness(60%);
+  z-index: 0;
 }
 
-.hero-banner h1 {
-  position: absolute;
-  bottom: 20%;
-  left: 5%;
-  font-size: 3rem;
+.hero-banner-content {
+  position: relative;
+  z-index: 10;
+  padding: 0 2rem 3rem;
+  max-width: 550px;
+}
+
+.hero-banner-content h1 {
+  font-size: 2.8rem;
   font-weight: 700;
-  color: #fff;
+  margin-bottom: 1rem;
 }
 
-.hero-banner a {
-  position: absolute;
-  bottom: 10%;
-  left: 5%;
+.hero-banner-content p {
+  margin-bottom: 1rem;
+  color: #dcdcdc;
+  line-height: 1.5;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 1rem;
+}
+
+.hero-buttons a {
   background: #e50914;
   padding: 0.75rem 1.5rem;
   border-radius: 8px;
-  color: white;
   font-weight: 600;
-  transition: background 0.3s;
+  color: white;
 }
 
-.hero-banner a:hover {
+.hero-buttons a:hover {
   background: #b20710;
+}
+
+.hero-buttons button {
+  background: transparent;
+  border: 1px solid #fff;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  color: white;
+}
+
+.hero-buttons button:hover {
+  background: white;
+  color: black;
 }
 
 /* ==========================
    MOVIE SECTIONS
 ========================== */
-
-/* Layout for all sections (stacked vertically) */
 .movie-sections {
   display: flex;
   flex-direction: column;
   gap: 3rem;
-  margin-top: 4rem;
+  padding-top: 2rem;
 }
 
-/* Each section (e.g., Trending, Classic Collections) */
-.movie-section {
-  flex: 1;
-  padding: 0 1rem;
-}
-
-/* Section Heading */
 .movie-section h2 {
   font-size: 1.8rem;
   font-weight: 700;
-  color: #e50914; /* Netflix red */
-  margin-bottom: 1.5rem;
-  text-align: left;
+  color: #ff4b5c;
   padding-left: 1rem;
+  margin-bottom: 1rem;
 }
 
 /* ==========================
-   MOVIE ROW (ROW DISPLAY)
+   MOVIE ROW (HORIZONTAL)
 ========================== */
 .movie-row {
   display: flex;
   flex-wrap: nowrap;
-  overflow-x: auto;
   gap: 1rem;
-  scroll-behavior: smooth;
+  overflow-x: auto;
   padding: 0 1rem 1rem;
+  scroll-behavior: smooth;
 }
 
-/* Hide scrollbar in WebKit browsers */
 .movie-row::-webkit-scrollbar {
   height: 8px;
 }
-
 .movie-row::-webkit-scrollbar-thumb {
-  background-color: #ff4b5c;
-  border-radius: 10px;
+  background: #ff4b5c;
+  border-radius: 50px;
 }
-
 .movie-row::-webkit-scrollbar-track {
   background: #111;
 }
@@ -197,40 +212,43 @@ nav {
   flex: 0 0 auto;
   width: 150px;
   text-align: center;
+  cursor: pointer;
   transition: transform 0.3s ease;
-}
-
-.movie-card img {
-  border-radius: 10px;
-  width: 150px;
-  height: 225px;
-  object-fit: cover;
 }
 
 .movie-card:hover {
   transform: scale(1.05);
 }
 
+.movie-card img {
+  width: 150px;
+  height: 225px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
 .movie-card p {
   margin-top: 0.5rem;
-  font-size: 0.9rem;
   color: #e5e5e5;
+  font-size: 0.95rem;
 }
 
 /* ==========================
    RESPONSIVE FIXES
 ========================== */
-@media (max-width: 600px) {
-  .hero-banner h1 {
+@media (max-width: 768px) {
+  .hero-banner {
+    height: 50vh;
+  }
+
+  .hero-banner-content h1 {
     font-size: 2rem;
   }
 
-  .hero-banner a {
+  .hero-buttons a,
+  .hero-buttons button {
     padding: 0.5rem 1rem;
-  }
-
-  .movie-section h2 {
-    font-size: 1.3rem;
+    font-size: 0.9rem;
   }
 
   .movie-card {
@@ -239,50 +257,5 @@ nav {
 
   .movie-card img {
     height: 180px;
-  }
-}
-/* Fix for HeroBanner content position */
-.hero-banner-content {
-  position: absolute;
-  bottom: 10%;
-  left: 5%;
-  z-index: 10;
-}
-
-/* Movie sections layout */
-.movie-sections {
-  display: flex;
-  flex-direction: column;
-  gap: 3rem;
-  margin-top: 4rem;
-}
-
-/* Each movie list horizontally scrollable */
-.movie-row {
-  display: flex;
-  flex-wrap: nowrap;
-  gap: 1rem;
-  overflow-x: auto;
-  scroll-behavior: smooth;
-  padding: 0 1rem;
-}
-
-.movie-row::-webkit-scrollbar {
-  height: 8px;
-}
-
-.movie-row::-webkit-scrollbar-thumb {
-  background: #ff4b5c;
-  border-radius: 10px;
-}
-
-.movie-row::-webkit-scrollbar-track {
-  background: #111;
-}
-
-/* On desktop, keep 3 sections stacked vertically */
-@media (min-width: 1024px) {
-  .movie-sections {
-    flex-direction: column;
   }
 }

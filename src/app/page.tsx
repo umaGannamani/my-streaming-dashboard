@@ -5,6 +5,7 @@ import MovieRow from "./components/MovieRow";
 export default async function HomePage() {
   const movies = await fetchPopular();
 
+  // Empty state
   if (!movies || movies.length === 0) {
     return (
       <div className="flex flex-col items-center justify-center h-[60vh] text-center text-gray-400">
@@ -18,22 +19,28 @@ export default async function HomePage() {
 
   return (
     <div className="space-y-12 mt-16">
+      {/* -----------------------------
+           HERO BANNER
+      -------------------------------- */}
       {firstMovie && <HeroBanner movie={firstMovie} />}
 
-      {/* ✅ Three sections in column, each with horizontal rows */}
-      <div className="movie-sections">
-        <div className="movie-section">
-          <MovieRow categoryTitle="Popular Batman Movies" movies={movies} />
-        </div>
+      {/* -----------------------------
+           MOVIE ROW SECTIONS
+      -------------------------------- */}
+      <MovieRow
+        categoryTitle="Popular Batman Movies"
+        movies={movies}
+      />
 
-        <div className="movie-section">
-          <MovieRow categoryTitle="More Action Picks" movies={movies.slice(1, 6)} />
-        </div>
+      <MovieRow
+        categoryTitle="More Action Picks"
+        movies={movies.slice(1, Math.min(6, movies.length))}
+      />
 
-        <div className="movie-section">
-          <MovieRow categoryTitle="Classics Collection" movies={movies.slice(6, 12)} />
-        </div>
-      </div>
+      <MovieRow
+        categoryTitle="Classics Collection"
+        movies={movies.slice(6, Math.min(12, movies.length))}
+      />
     </div>
   );
 }

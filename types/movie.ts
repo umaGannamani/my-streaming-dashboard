@@ -1,9 +1,14 @@
+// types/movie.ts
+
 export interface Movie {
-  imdbID: string;
+  imdbID: string;       // unique ID
   Title: string;
   Year: string;
   Poster: string;
-  Type?: string;
+  Type?: string;        // movie, series, etc.
+}
+
+export interface MovieDetail extends Movie {
   Plot?: string;
   Genre?: string;
   Director?: string;

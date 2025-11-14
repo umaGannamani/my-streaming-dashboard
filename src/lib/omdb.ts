@@ -1,25 +1,20 @@
 // src/lib/omdb.ts
+import type { Movie, MovieDetail } from "@/types/movie";
+
 const BASE_URL = "https://www.omdbapi.com/";
 const API_KEY = process.env.OMDB_API_KEY;
 
-// ✅ Helper to check API key
 if (!API_KEY) {
   console.warn("⚠️ OMDB_API_KEY is missing. Please set it in .env.local");
 }
 
 /**
  * Fetch a list of movies (simulated “popular” list)
- * Since OMDb doesn’t have a real /popular endpoint,
- * we use a keyword search such as "batman".
  */
-export async function fetchPopular() {
+export async function fetchPopular(): Promise<Movie[]> {
   try {
     const url = `${BASE_URL}?apikey=${API_KEY}&s=batman&type=movie`;
-
-    const res = await fetch(url, {
-      // ✅ Force server-side fetch for Next.js App Router
-      cache: "no-store",
-    });
+    const res = await fetch(url, { cache: "no-store" });
 
     if (!res.ok) {
       console.error("❌ Failed to fetch movies:", res.statusText);
@@ -33,7 +28,7 @@ export async function fetchPopular() {
       return [];
     }
 
-    return data.Search || [];
+    return data.Search as Movie[];
   } catch (err) {
     console.error("⚠️ Error fetching popular movies:", err);
     return [];
@@ -43,10 +38,9 @@ export async function fetchPopular() {
 /**
  * Fetch full details for a movie by IMDb ID
  */
-export async function fetchMovieById(id: string) {
+export async function fetchMovieById(id: string): Promise<MovieDetail | null> {
   try {
     const url = `${BASE_URL}?apikey=${API_KEY}&i=${id}&plot=full`;
-
     const res = await fetch(url, { cache: "no-store" });
 
     if (!res.ok) {
@@ -61,7 +55,7 @@ export async function fetchMovieById(id: string) {
       return null;
     }
 
-    return data;
+    return data as MovieDetail;
   } catch (err) {
     console.error("⚠️ Error fetching movie by ID:", err);
     return null;
