@@ -1,5 +1,6 @@
 "use client";
-import { Movie } from "../../types/movie";
+import { Movie } from "@/types/movie";
+
 import MovieCard from "./MovieCard";
 
 export default function MovieRow({

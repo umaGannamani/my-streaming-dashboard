@@ -1,7 +1,8 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import { Movie } from "../../types/movie";
+import { Movie } from "@/types/movie";
+
 
 export default function MovieCard({ movie }: { movie: Movie }) {
   const poster = movie.Poster && movie.Poster !== "N/A" ? movie.Poster : "/fallback.jpg";

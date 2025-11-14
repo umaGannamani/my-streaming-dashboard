@@ -1,7 +1,8 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import { Movie } from "../../types/movie";
+import { Movie } from "@/types/movie";
+
 
 export default function HeroBanner({ movie }: { movie: Movie }) {
   if (!movie) return null;
