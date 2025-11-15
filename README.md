@@ -1,36 +1,113 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🎬 StoryBit – Streaming Dashboard (Next.js + TailwindCSS)
 
-## Getting Started
+StoryBit is a modern streaming dashboard built using **Next.js 16**, **Tailwind CSS**, and **server-side movie fetching** from the OMDB API.  
+It includes a hero section, category-based movie carousels, responsive UI, and clean component architecture.
 
-First, run the development server:
+---
 
+## 🚀 Features
+
+### ✅ Hero Banner  
+- Displays a highlighted movie  
+- Contains title, release year, "Watch Now" & "Add to List" buttons  
+- Fully responsive and mobile-friendly  
+
+### ✅ Movie Sections  
+- “Classic Collections”  
+- “More Action Picks”  
+- “Popular Batman Movies”  
+- All sections appear IN COLUMN on desktop  
+- Each section’s movies appear IN ROW (horizontal scrolling)
+
+### ✅ Movie Detail Page  
+- Dynamic route: `/movie/[id]`  
+- Fetches full details from API  
+- Display poster, actors, plot, genre & ratings  
+
+### ✅ Tech Stack  
+- **Next.js 16** (App Router)  
+- **Tailwind CSS**  
+- **TypeScript**  
+- **OMDB API**  
+- **ESLint + Prettier**  
+
+---
+
+## 📁 Folder Structure
+
+# 🎬 StoryBit – Streaming Dashboard (Next.js + TailwindCSS)
+
+StoryBit is a modern streaming dashboard built using **Next.js 16**, **Tailwind CSS**, and **server-side movie fetching** from the OMDB API.  
+It includes a hero section, category-based movie carousels, responsive UI, and clean component architecture.
+
+---
+
+## 🚀 Features
+
+### ✅ Hero Banner  
+- Displays a highlighted movie  
+- Contains title, release year, "Watch Now" & "Add to List" buttons  
+- Fully responsive and mobile-friendly  
+
+### ✅ Movie Sections  
+- “Classic Collections”  
+- “More Action Picks”  
+- “Popular Batman Movies”  
+- All sections appear IN COLUMN on desktop  
+- Each section’s movies appear IN ROW (horizontal scrolling)
+
+### ✅ Movie Detail Page  
+- Dynamic route: `/movie/[id]`  
+- Fetches full details from API  
+- Display poster, actors, plot, genre & ratings  
+
+### ✅ Tech Stack  
+- **Next.js 16** (App Router)  
+- **Tailwind CSS**  
+- **TypeScript**  
+- **OMDB API**  
+- **ESLint + Prettier**  
+
+---
+
+## 📁 Folder Structure
+
+my-streaming-dashboard/
+├── app/
+│ ├── movie/[id]/page.tsx
+│ ├── components/
+│ │ ├── HeroBanner.tsx
+│ │ ├── MovieSection.tsx
+│ │ └── MovieCard.tsx
+│ ├── layout.tsx
+│ └── globals.css
+├── public/
+├── tailwind.config.js
+├── package.json
+└── README.md
+---
+
+## 🛠️ Installation & Setup
+
+### 1️⃣ Install dependencies
 ```bash
+npm install
+2️⃣ Run the development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+3️⃣ Build production version
+npm run build
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+4️⃣ Start production server
+npm start
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+🌐 Environment Variables
 
-## Learn More
+Create a .env.local file:
 
-To learn more about Next.js, take a look at the following resources:
+OMDB_API_KEY=your_api_key_here
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+You can get a free API key from:
+https://www.omdbapi.com/apikey.aspx
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
